@@ -3,21 +3,29 @@ using System.IO;
 
 class Program
 {
-    string playerOne = "";
+    public static string playerOne  = "";
+    public static string playerTwo = "";
     public static void Main (string[] args)
     {
-        //Displays game title
-        Console.WriteLine("***Welcome to Rock Paper Scissors***");
-        Console.WriteLine("Lets Begin");
-        Console.WriteLine(" ");
-        
-        //Asks users for name and saves to variables playerOne and playerTwo
-        Console.WriteLine("Player 1, enter your name and press enter: ");
-        string playerOne = Console.ReadLine();
-        Console.WriteLine("Player 2, enter your name and press enter: ");
-        string playerTwo = Console.ReadLine();
-        Console.WriteLine("Welcome "+playerOne+" and "+playerTwo);
+        GameTitle();
+        playerOne = InputName(1);
+        playerTwo = InputName(2);
+        Console.WriteLine($"Welcome {playerOne} and {playerTwo}!");
         Console.WriteLine("Press any key to continue...");
-        Console.ReadKey()
+        Console.ReadKey();
+
     }
+    public static void GameTitle()
+    {
+        //Displays game title
+        Console.WriteLine("***  Welcome to Rock Paper Scissors  ***");
+        Console.WriteLine("Lets Begin");
+        Console.WriteLine();
+    }
+    public static string InputName(int number)
+    {
+        Console.WriteLine("Player " + number + " enter your name and press enter: ");
+        return _ = Console.ReadLine();
+    }
+
 }
