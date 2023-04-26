@@ -10,24 +10,27 @@ class Program
     private static string playerOneMove = "";
     private static string playerTwoMove = "";
     public static string[] moves = { "Rock", "Paper", "Scissors" };
+    public static int gamesPlayed = 1;
 
     public static void Main(string[] args)
     {
         Console.ForegroundColor = ConsoleColor.Red;
         GameTitle();
+        //The Console.Writeline(" ");'s add blank space between the different functions to avoid clutter
+        Console.WriteLine(" ");
+        playerOne = InputName(1);
+        Console.WriteLine(" ");
+        playerTwo = InputName(2);
+        Console.WriteLine(" ");
+        Console.WriteLine($"Welcome {playerOne} and {playerTwo}!");
+        Console.WriteLine("Press any key to continue...");
+        Console.ReadKey();
+        Console.WriteLine(" ");
+        Console.WriteLine(" ");
         //do while to repeat game depending on user choice
         do
         {
-            //The Console.Writeline(" ");'s add blank space between the different functions to avoid clutter
-            Console.WriteLine(" ");
-            playerOne = InputName(1);
-            Console.WriteLine(" ");
-            playerTwo = InputName(2);
-            Console.WriteLine(" ");
-            Console.WriteLine($"Welcome {playerOne} and {playerTwo}!");
-            Console.WriteLine("Press any key to continue...");
-            Console.ReadKey();
-            Console.WriteLine(" ");
+            Console.WriteLine($"Round {gamesPlayed}!");
             Console.WriteLine(" ");
             playerOneMove = InputMove(playerOne);
             Console.WriteLine(" ");
@@ -36,13 +39,15 @@ class Program
             Console.WriteLine(" ");
             GameResult();
             Console.WriteLine(" ");
-        } while (PlayAgain());
+            gamesPlayed += PlayAgain();
+        } while (gamesPlayed <= 5);
     }
 
     // Displays the game title
     public static void GameTitle()
     {
         Console.WriteLine("***  Welcome to Rock Paper Scissors  ***");
+        Console.WriteLine("Best out of 5");
         Console.WriteLine("Let's Begin");
     }
 
@@ -106,7 +111,7 @@ class Program
     }
 
     // Prompts the user to press "y" to play again or "n" to exit program
-    public static bool PlayAgain()
+    public static int PlayAgain()
     {
         Console.WriteLine("Thanks for playing Rock, Paper, Scissors!") ;
         Console.WriteLine("Do you want to play again? (y/n)?");
@@ -115,12 +120,11 @@ class Program
         if (answer == "y")
         {
             Console.Clear();
-            GameTitle();
-            return true;
+            return 1;
         }
         else if (answer == "n")
         {
-            return false;
+            return 5;
         }
         else
         {
