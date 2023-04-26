@@ -9,9 +9,11 @@ class Program
     public static string playerTwo = "";
     private static string playerOneMove = "";
     private static string playerTwoMove = "";
+    public static string[] moves = { "Rock", "Paper", "Scissors" };
 
     public static void Main(string[] args)
     {
+        Console.ForegroundColor = ConsoleColor.Red;
         GameTitle();
         //do while to repeat game depending on user choice
         do
@@ -54,11 +56,27 @@ class Program
     // Prompts the user to enter their move asn "Rock", "Paper" or "Scissors" and returns the move as string
     public static string InputMove(string name)
     {
+        string answer = "";
 
         Console.WriteLine($"{name}, it's your move.");
-        Console.WriteLine("Enter 'Rock' for Rock, 'Paper' for Paper or 'Scissors' for Scissors and press enter");
-        Console.WriteLine("Make sure to capatilize your choice!");
-        return Console.ReadLine();
+
+        for (int i = 0; i < moves.Length; i++)
+        {
+            Console.WriteLine($"{i+1}. {moves[i]}");
+        }
+        Console.WriteLine($"Enter '1' for {moves[0]}, '2' for {moves[1]} or '3' for {moves[2]}");
+        string arrayinput = Console.ReadLine();
+        if (arrayinput == "1") {
+            answer = "Rock";
+        }
+        else if (arrayinput == "2"){
+            answer = "Paper";
+        }
+        else if (arrayinput == "3") {
+            answer = "Scissors";
+        }
+
+        return answer;
     }
 
     // Compares the moves of player one and player two and displays the result of the game
