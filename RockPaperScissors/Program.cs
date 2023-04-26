@@ -28,7 +28,6 @@ class Program
         Console.WriteLine("Press any key to continue...");
         Console.ReadKey();
         Console.WriteLine(" ");
-        Console.WriteLine(" ");
         //do while to repeat game depending on user choice
         do
         {
