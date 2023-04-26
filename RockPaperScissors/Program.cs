@@ -11,6 +11,8 @@ class Program
     private static string playerTwoMove = "";
     public static string[] moves = { "Rock", "Paper", "Scissors" };
     public static int gamesPlayed = 1;
+    private static int playerOneScore = 0;
+    private static int playerTwoScore = 0;
 
     public static void Main(string[] args)
     {
@@ -41,6 +43,7 @@ class Program
             Console.WriteLine(" ");
             gamesPlayed += PlayAgain();
         } while (gamesPlayed <= 5);
+        DisplayScores();
     }
 
     // Displays the game title
@@ -93,12 +96,14 @@ class Program
         {
 
             Console.WriteLine($"{playerOne} wins! {playerOne}'s {playerOneMove} beats {playerTwo}'s {playerTwoMove}!");
+            playerOneScore += 1;
         }
         else if ((playerTwoMove == "Rock" && playerOneMove == "Scissors") ||
                  (playerTwoMove == "Paper" && playerOneMove == "Rock") ||
                  (playerTwoMove == "Scissors" && playerOneMove == "Paper"))
         {
             Console.WriteLine($"{playerTwo} wins! {playerTwo}'s {playerTwoMove} beats {playerOne}'s {playerOneMove}!");
+            playerTwoScore += 1;
         }
         else if (playerOneMove == playerTwoMove)
         {
@@ -132,4 +137,22 @@ class Program
             return PlayAgain();
         }
     }
+    public static void DisplayScores()
+    {
+        if (playerOneScore == playerTwoScore)
+        {
+            Console.WriteLine($"Over 5 games, {playerOne} and {playerTwo} both scored {playerOneScore}");
+        }
+        else if (playerOneScore  > playerTwoScore)
+        {
+            Console.WriteLine($"Over 5 games, {playerOne} wins with a score of {playerOneScore}");
+        }
+        else if (playerOneScore < playerTwoScore)
+        {
+            Console.WriteLine($"Over 5 games, {playerTwo} wins with a score of {playerTwoScore}");
+        }
+    
+    }
+
+
 }
